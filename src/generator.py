@@ -56,7 +56,7 @@ class LLMProvider:
         Options: groq, openrouter, google_ai, ollama
         """
         temperature = kwargs.get('temperature', 0.1)
-        max_tokens = kwargs.get('max_tokens', 2048)
+        # max_tokens = kwargs.get('max_tokens', 2048)
         
         if provider == "groq":
             return ChatGroq(
@@ -135,7 +135,7 @@ with open(BM25_DIR, "rb") as f:
 # OPTIMIZATION: Weighted RRF with EnsembleRetriever (LangChain 0.3+)
 ensemble_retriever = EnsembleRetriever(
     retrievers=[semantic_retriever, bm25_retriever],
-    weights=[0.7, 0.3],  # Favor semantic search
+    weights=[0.6, 0.4],  # Favor semantic search
     c=60  # RRF constant (default)
 )
 
