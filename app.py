@@ -387,7 +387,7 @@ async def ingest_document(
     ```
     """
     import uuid
-    from ingestion import ingest_documents
+    from src.ingestion import ingest_documents
     
     task_id = str(uuid.uuid4())
     
