@@ -27,7 +27,8 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="collapsed",
 )
-
+# ASSETS_DIR = Path(__file__).parent
+BOT_AVATAR = "image/bot.gif"
 # ==================== CUSTOM CSS ====================
 st.markdown("""
 <style>
@@ -530,7 +531,7 @@ def main():
     
     # Display all chat messages
     for idx, message in enumerate(st.session_state.messages):
-        with st.chat_message(message["role"], avatar="👤" if message["role"] == "user" else "🤖"):
+        with st.chat_message(message["role"], avatar="👤" if message["role"] == "user" else BOT_AVATAR):
             st.markdown(message["content"])
             
             # Show sources for assistant messages
@@ -568,7 +569,7 @@ def process_user_query(prompt: str):
         st.markdown(prompt)
     
     # Generate response
-    with st.chat_message("assistant", avatar="🤖"):
+    with st.chat_message("assistant", avatar= BOT_AVATAR): # type: ignore
         # Typing indicator
         typing_placeholder = st.empty()
         typing_placeholder.markdown("""
